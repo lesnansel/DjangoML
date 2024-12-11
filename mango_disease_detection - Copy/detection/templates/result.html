@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            background-color: #e0f7fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+        }
+
+        .result {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            margin-top: 25px;
+            background-color: #2196F3;
+            padding: 14px 28px;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #0b7dda;
+            transform: translateY(-2px);
+        }
+
+        .back-btn:active {
+            background-color: #0a67b1;
+            transform: translateY(0);
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .explanation {
+            background-color: #f0f4c3;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: #333;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .explanation h3 {
+            color: #3e8e41;
+            margin-bottom: 10px;
+        }
+
+        /* Small screen responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                width: 90%;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            .result {
+                font-size: 20px;
+            }
+            .back-btn {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Prediction Result</h2>
+
+        <!-- Display the uploaded image -->
+        <div class="image-container">
+            <img src="{{ image_path }}" alt="Uploaded Mango Leaf">
+        </div>
+
+        <!-- Display the result -->
+        <p class="result">Predicted Disease: {{ predicted_disease }}</p>
+        <p class="result">Confidence: {{ confidence }}%</p>
+
+        <!-- Display the disease explanation -->
+        <div class="explanation">
+            <h3>About the Disease:</h3>
+            <p>{{ disease_explanation }}</p>
+        </div>
+        
+        <div class="treatment">
+            <h3>Treatment Recommendation:</h3>
+            <p>{{ treatment_recommendation }}</p>
+        </div>
+        
+
+        <!-- Button to go back -->
+        <a href="/detection/classify/" class="back-btn">Go Back</a>
+    </div>
+
+</body>
+</html>
